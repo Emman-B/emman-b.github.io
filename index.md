@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Hello, I'm Emmanuel Butor
 
 Welcome to my temporary portfolio (I plan on having a much better looking portfolio in the future).
