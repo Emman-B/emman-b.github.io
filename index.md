@@ -2,9 +2,7 @@
 layout: default
 ---
 
-# Hello, I'm Emmanuel Butor
-
-Welcome to my temporary portfolio (I plan on having a much better looking portfolio in the future).
+I'm Emmanuel Butor. Welcome to my portfolio.
 
 ## About Me
 I like to program things for fun, whether they are simple web apps or full games in Unity.
