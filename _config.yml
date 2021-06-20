@@ -1,2 +1,5 @@
 title: "Emmanuel Butor's Portfolio"
 theme: jekyll-theme-cayman
+navbar-links:
+  - Emman-B: "https://github.com/Emman-B"
+  - ebutor: "https://github.com/ebutor"

@@ -2,7 +2,7 @@
 layout: default
 ---
 
-I'm Emmanuel Butor. Welcome to my portfolio. You can find my work on Github on either my personal account, <button class="btn" onclick="https://github.com/Emman-B">Emman-B</button>, or my school account [ebutor](https://github.com/ebutor).
+I'm Emmanuel Butor. Welcome to my portfolio. You can find my work on Github on either my personal account, [Emman-B](https://github.com/emman-b), or my school account [ebutor](https://github.com/ebutor).
 
 ## About Me
 I like to program things for fun, whether they are simple web apps or full games in Unity.
