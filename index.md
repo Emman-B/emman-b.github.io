@@ -45,8 +45,8 @@ Here is a list of projects that I have worked on, either with a team or on my ow
 <br>
 
 * **stage_fright** (Github: <https://github.com/jnkrupp/stage-fright>) (Devpost: <https://devpost.com/software/stage_fright>)
-  * Technologies Used: Unity, Git
-  * Languages Used: C#
+  * Technologies Used: Unity, Git, Flask, IBM Watson
+  * Languages Used: C#, Python
 > This was an entry in the CruzHacks 2019 Hackathon where we devloped an app to help with alleviating stage fright during public speaking. My role with this project was developing the VR space to simulate speaking in front of a live audience. This entry won a few of the awards in the hackathon ("Tech Cares" and "UCSC Arts").
 
 <br>
