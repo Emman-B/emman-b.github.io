@@ -44,6 +44,13 @@ Here is a list of projects that I have worked on, either with a team or on my ow
 
 <br>
 
+* **blog-fs** (Github: <https://github.com/Emman-B/blog-fs>)
+  * Technologies Used: PostgreSQL, Express.js, React, Node.js
+  * Languages Used: Javascript (JSX), SQL, HTML, CSS
+> This is a full-stack web application that uses the PERN stack for blogging. I am the sole developer of this project, and this was used to learn more about full-stack web development. The web application supports creating/editing/reading/deleting blog posts, as well as account creation and authentication.
+
+<br>
+
 * **stage_fright** (Github: <https://github.com/jnkrupp/stage-fright>) (Devpost: <https://devpost.com/software/stage_fright>)
   * Technologies Used: Unity, Git, Flask, IBM Watson
   * Languages Used: C#, Python
