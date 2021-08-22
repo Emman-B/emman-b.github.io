@@ -86,10 +86,18 @@ body {
     pointer-events: all;
 }
 
+
+
 /* All H2 elements (titles of sections) */
 h2 {
     text-align: center;
     margin: 3em 0;
+}
+
+/* All a links */
+a {
+    color: white;
+    text-decoration: none;
 }
 
 /* Portfolio is divided into sections */
@@ -128,14 +136,16 @@ section:nth-child(2n + 3) {
     animation: load-fade-in 0.4s 0.4s forwards;
 }
 
-#home .link-buttons {
+#home #link-buttons {
     position: absolute;
-    top: 80%;
+    top: 10em;
+    margin: auto;
 
     /* Animation fade-in */
     opacity: 0;
     animation: load-fade-in 0.4s 0.8s forwards;
 }
+
 
 #home {
     background-color: hsl(216, 18%, 16%);
@@ -145,9 +155,16 @@ section:nth-child(2n + 3) {
     height: 100vh;
 }
 
-.link-buttons {
-    margin: auto;
+/* Link button icons */
+.link-button i {
+    font-size: x-large;
+    padding-right: 0.25em;
 }
+/* Link button links */
+.link-button .link {
+    font-size: small;
+}
+
 
 /* Styling elements with an icon and label */
 .iconlabel {

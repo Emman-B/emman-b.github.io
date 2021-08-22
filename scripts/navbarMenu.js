@@ -1,6 +1,4 @@
-
-// state of menu
-
+// This is for the logic for the navigation menu
 
 window.addEventListener('load', () => {
     const menuButton = document.getElementById('menu-button');
