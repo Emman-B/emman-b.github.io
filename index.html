@@ -12,18 +12,27 @@
     <!-- Devicon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.13.0/devicon.min.css">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="fontawesome-free-5.15.4-web/css/all.css">
+
     <!-- Scripts -->
     <script src="scripts/animateOnView.js"></script>
+    <script src="scripts/navbarMenu.js"></script>
 
     <title>Emmanuel Butor | Portfolio</title>
 </head>
 <body>
     <nav class="navbar">
-        <a href="#home">Top</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <button id="menu-button" class="fas fa-bars"></button>
+        <div class="outer-nav-links">
+            <div class="nav-links toggle-menu-content">
+                <a href="#home">Top</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
     </nav>
     <section id="home">
         <header>

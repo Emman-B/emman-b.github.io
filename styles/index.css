@@ -36,7 +36,13 @@ body {
     top: 3vh;
 }
 
+
 /* Navigation Bar links */
+.nav-links {
+    display: flex;
+    flex-direction: column;
+}
+
 .navbar a {
     color: white;
 
@@ -47,6 +53,37 @@ body {
 /* Hovering on the navbar links */
 .navbar a:hover {
     text-decoration: underline;
+}
+
+#menu-button {
+    color: white;
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: larger;
+    text-shadow: 0 0 5px black;
+    cursor: pointer;
+
+    transform: scale(1);
+    transition: color 0.1s ease, transform 0.1s ease;
+
+}
+
+#menu-button:active {
+    color: hsl(0, 0%, 65%);
+    transform: scale(0.9);
+}
+
+/* Logic for the toggle menu */
+.toggle-menu-content {
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.5s ease;
+}
+.toggle-menu-content.is-open {
+    opacity: 1;
+    pointer-events: all;
 }
 
 /* All H2 elements (titles of sections) */
