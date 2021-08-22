@@ -1,4 +1,4 @@
-@keyframes body-load-fade-in {
+@keyframes load-fade-in {
     from {
         opacity: 0;
         transform: translateX(-2.5em);
@@ -36,12 +36,26 @@ body {
     top: 3vh;
 }
 
-h1, h2 {
+/* Navigation Bar links */
+.navbar a {
+    color: white;
+
+    text-decoration: none;
+    text-shadow: 0 0 5px black;
+    padding-bottom: 1vh;
+}
+/* Hovering on the navbar links */
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* All H2 elements (titles of sections) */
+h2 {
     text-align: center;
     margin: 3em 0;
 }
 
-
+/* Portfolio is divided into sections */
 section {
     background-color: hsl(217, 10%, 25%);
     margin-bottom: 10em;
@@ -49,28 +63,41 @@ section {
     box-shadow: 0px 0px 5px 5px #606060;
 }
 
-section:nth-child(2n + 2) {
+/* Every other section has a different BG-color */
+section:nth-child(2n + 3) {
     background-color: hsl(218, 30%, 25%);
 }
 
-#home h1 {
+#home header {
     position: absolute;
-    top: 40%;
+    top: 40vh;
+}
 
-    animation: body-load-fade-in 0.4s;
+.name-and-title h2 {
+    text-align: left;
+    padding-bottom: 5vh;
+}
+
+
+#home h1 {
+    animation: load-fade-in 0.4s;
 }
 
 #home h2 {
-    position: absolute;
-    top: 50%;
     font-size: medium;
     opacity: 0;
-    animation: body-load-fade-in 0.4s 0.4s forwards;
+
+    /* Animation fade-in */
+    animation: load-fade-in 0.4s 0.4s forwards;
 }
 
 #home .link-buttons {
     position: absolute;
     top: 80%;
+
+    /* Animation fade-in */
+    opacity: 0;
+    animation: load-fade-in 0.4s 0.8s forwards;
 }
 
 #home {
@@ -85,7 +112,7 @@ section:nth-child(2n + 2) {
     margin: auto;
 }
 
-/* For providing labels to icons */
+/* Styling elements with an icon and label */
 .iconlabel {
     display: inline-flex;
     flex-direction: column;
@@ -174,8 +201,8 @@ article.project figure {
     align-self: center;
     max-height: 15rem;
 }
-
-figure img{
+/* Styling the exact <img> tag */
+figure img {
     display: block;
     width: 100%;
 }
