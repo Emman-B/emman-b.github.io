@@ -1,0 +1,192 @@
+@keyframes body-load-fade-in {
+    from {
+        opacity: 0;
+        transform: translateX(-2.5em);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: hsl(0, 0%, 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.05rem;
+    line-height: 1.5rem;
+    color: white;
+    margin: 0;
+}
+
+/* Navigation Bar */
+.navbar {
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    right: 3vw;
+    top: 3vh;
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 3em 0;
+}
+
+
+section {
+    background-color: hsl(217, 10%, 25%);
+    margin-bottom: 10em;
+    padding: 1em 2em;
+    box-shadow: 0px 0px 5px 5px #606060;
+}
+
+section:nth-child(2n + 2) {
+    background-color: hsl(218, 30%, 25%);
+}
+
+#home h1 {
+    position: absolute;
+    top: 40%;
+
+    animation: body-load-fade-in 0.4s;
+}
+
+#home h2 {
+    position: absolute;
+    top: 50%;
+    font-size: medium;
+    opacity: 0;
+    animation: body-load-fade-in 0.4s 0.4s forwards;
+}
+
+#home .link-buttons {
+    position: absolute;
+    top: 80%;
+}
+
+#home {
+    background-color: hsl(216, 18%, 16%);
+    background-image: linear-gradient(to right, hsl(216, 18%, 16%), hsl(216, 18%, 30%));
+    color: white;
+    padding: 1em 2em;
+    height: 100vh;
+}
+
+.link-buttons {
+    margin: auto;
+}
+
+/* For providing labels to icons */
+.iconlabel {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.25rem;
+    padding: 0.25rem;
+    border-radius: 1rem;
+
+    transform: scale(1);
+    transition: transform 0.2s ease, background-color 1s ease-out;
+}
+
+.iconlabel:hover {
+    transform: scale(1.2);
+    background-color: hsl(0, 0%, 35%);
+}
+
+/* For styling the icons in the skills section */
+svg {
+    width: 64px;
+    padding: 0.5rem;
+}
+
+/* Any SVGs that need a background (usually a bright one) will be given one here */
+.invert-icon svg {
+    filter: invert(100%);
+}
+
+/* Style the contains for the languages and technologies */
+.skills-languages, .skills-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Styling projects */
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Styling the project */
+article.project {
+    display: flex;
+    flex-direction: column;
+    margin-top: 7.5rem;
+    margin-bottom: 7.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+
+    border: 6px solid hsl(121, 39%, 69%);
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    border-image: linear-gradient(to top, hsl(121, 39%, 69%), hsl(95, 50%, 55%)) 4;
+    border-radius: 0.5em;
+    padding: 1em;
+    transition: transform 0.2s ease;
+
+    width: 300px;
+}
+
+article.web-project {
+    border-image: linear-gradient(to top, hsl(180, 100%, 36%), hsl(240, 85%, 65%)) 4;
+}
+
+article.game-project {
+    border-image: linear-gradient(to top, hsl(18, 49%, 73%), hsl(340, 49%, 55%)) 4;
+}
+
+article.project:hover {
+    transform: scale(1.02);
+    background-color: hsl(218, 20%, 35%);
+}
+
+article.project h3 {
+    text-align: center;
+}
+
+/* Image styling for projects */
+article.project figure {
+    width: 250px;
+    overflow: hidden;
+    margin: 0;
+    align-self: center;
+    max-height: 15rem;
+}
+
+figure img{
+    display: block;
+    width: 100%;
+}
+
+/* Show this element and its children on view */
+.animate-on-view {
+    opacity: 0;
+    transform: translate(-25px);
+    transition: transform 0.75s ease, opacity 0.75s ease;
+}
+.animate-on-view.is-visible {
+    opacity: 1;
+    transform: translateX(0px);
+}
