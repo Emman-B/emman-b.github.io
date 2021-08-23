@@ -327,6 +327,24 @@ figure img {
     width: 100%;
 }
 
+/* Responsive desktop project view */
+@media only screen and (min-width: 801px) {
+    #projects-section {
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+    article.project {
+        display: block;
+        width: 500px;
+    }
+    article.project .project-details {
+        display: block;
+    }
+    article.project figure {
+        float: right;
+    }
+}
+
 /* Show this element and its children on view */
 .animate-on-view {
     opacity: 0;
