@@ -250,6 +250,49 @@ article.project {
     width: 300px;
 }
 
+article.project .project-details {
+    display: flex;
+    flex-direction: column;
+}
+
+
+article.project .project-techs-langs {
+    font-size: xx-large;
+}
+
+article.project .project-links {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+article.project .project-link {
+    border: 2px solid white;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+article.project .project-link-github {
+    color: hsl(40, 80%, 70%);
+    border-color: hsl(40, 80%, 70%);
+}
+
+article.project .project-link-play {
+    color: hsl(150, 80%, 70%);
+    border-color: hsl(150, 80%, 70%);
+}
+
+article.project .project-link-trailer {
+    color: hsl(0, 80%, 70%);
+    border-color: hsl(0, 80%, 70%);
+}
+
+article.project .project-link:hover {
+    background-color: hsla(0, 0%, 0%, 0.5);
+}
+
 article.web-project {
     border-image: linear-gradient(to top, hsl(180, 100%, 36%), hsl(240, 85%, 65%)) 4;
 }
@@ -259,8 +302,8 @@ article.game-project {
 }
 
 article.project:hover {
-    transform: scale(1.02);
-    background-color: hsl(218, 20%, 35%);
+    transform: scale(1.01);
+    background-color: hsl(218, 50%, 15%);
 }
 
 article.project h3 {
