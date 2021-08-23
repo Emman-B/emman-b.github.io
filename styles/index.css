@@ -32,8 +32,8 @@ body {
     flex-direction: column;
 
     position: fixed;
-    right: 3vw;
-    top: 3vh;
+    right: 10vw;
+    top: 5vh;
 }
 
 
@@ -41,6 +41,10 @@ body {
 .nav-links {
     display: flex;
     flex-direction: column;
+
+    background-color: hsla(0, 0%, 0%, 0.7);
+    padding: 0.25rem 1rem;
+    border-radius: 5px;
 }
 
 .navbar a {
@@ -60,13 +64,20 @@ body {
     align-self: flex-end;
     background: none;
     border: none;
-    font-size: larger;
+    font-size: xx-large;
     text-shadow: 0 0 5px black;
     cursor: pointer;
 
-    transform: scale(1);
-    transition: color 0.1s ease, transform 0.1s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 5em;
 
+    transform: scale(1);
+    transition: color 0.1s ease, transform 0.1s ease, background-color 0.1s ease;
+
+}
+
+#menu-button:hover {
+    background-color: hsla(0, 0%, 0%, 0.3);
 }
 
 #menu-button:active {
@@ -103,6 +114,7 @@ a {
 /* Portfolio is divided into sections */
 section {
     background-color: hsl(217, 10%, 25%);
+    margin: auto;
     margin-bottom: 10em;
     padding: 1em 2em;
     box-shadow: 0px 0px 5px 5px #606060;
@@ -111,6 +123,14 @@ section {
 /* Every other section has a different BG-color */
 section:nth-child(2n + 3) {
     background-color: hsl(218, 30%, 25%);
+}
+
+/* Responsive sections */
+@media only screen and (min-width: 801px) {
+    section {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
 }
 
 #home header {
