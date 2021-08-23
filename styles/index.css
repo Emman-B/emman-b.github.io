@@ -185,6 +185,9 @@ section:nth-child(2n + 3) {
     font-size: small;
 }
 
+.link-button a:hover {
+    text-decoration: underline;
+}
 
 /* Styling elements with an icon and label */
 .iconlabel {
