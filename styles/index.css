@@ -1,224 +1,323 @@
-@keyframes load-fade-in {
-    from {
-        opacity: 0;
-        transform: translateX(-2.5em);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
+/*************************************************************
+ * Document-wide styling and configuration
+**************************************************************/
 
 html {
     scroll-behavior: smooth;
 }
 
+:root {
+    color-scheme: dark;
+
+    --bright-color-white: hsl(176, 29%, 92%);
+    --accent-color: hsl(153, 67%, 60%);
+    --accent-color-light: hsl(153, 67%, 75%);
+    --ternary-color: hsl(231, 100%, 65%);
+    --dark-color: hsl(210, 100%, 8%);
+    --darker-color: hsl(210, 100%, 6%);
+    --darkest-bg-color: hsl(210, 100%, 4%);
+
+    /* Colors generated with square of accent color */
+    --accent-sq2: hsl(244, 67%, 60%);
+    --accent-sq3: hsl(333, 67%, 60%);
+    --accent-sq4: hsl(64, 67%, 60%);
+
+    /* Square of accent color with reduced light */
+    --accent-color-dark: hsl(153, 67%, 30%);
+    --accent-sq2-dark: hsl(244, 67%, 30%);
+    --accent-sq3-dark: hsl(333, 67%, 30%);
+    --accent-sq4-dark: hsl(64, 67%, 30%);
+}
+
 body {
-    background-color: hsl(0, 0%, 100%);
+    background-color: var(--darker-color);
     background-attachment: fixed;
     background-size: cover;
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    letter-spacing: 0.05rem;
-    line-height: 1.5rem;
-    color: white;
+
     margin: 0;
+
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--bright-color-white);
 }
 
-/* Navigation Bar */
+/*************************************************************
+ * Navigation bar styling
+**************************************************************/
+
 .navbar {
-    z-index: 10;
-
-    display: flex;
-    flex-direction: column;
-
     position: fixed;
-    right: 10vw;
-    top: 5vh;
+
+    display: flex;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 100px;
+    overflow: visible;
+
+    padding: 2rem;
+
+    background-image: linear-gradient(to bottom, hsla(210, 100%, 4%, 100%) 70%, hsla(210, 100%, 4%, 0%) 100%);
+
+    z-index: 100;
 }
 
+.navbar .navbar-icon {
+    width: 30px;
 
-/* Navigation Bar links */
-.nav-links {
+    /* If logo fails to load, this is for styling the replacement text */
+    white-space: nowrap;
+    font-weight: 300;
+}
+
+/* Navigation hamburger menu animation */
+.activated .top-bar {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.activated .mid-bar {
+    opacity: 0;
+}
+
+.activated .bot-bar {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+.navbar .navbar-menu {
+    display: flex;
+    flex-grow: 2;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.navbar .navbar-toggle {
+    cursor: pointer;
+    width: 30px;
+}
+
+.navbar-toggle .top-bar,
+.navbar-toggle .mid-bar,
+.navbar-toggle .bot-bar {
+    width: 30px;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 6px 0;
+
+    transition: 0.25s;
+}
+
+.navbar .navbar-links {
+    position: fixed;
+    box-sizing: border-box;
+    top: 0;
+    bottom: 0;
+    padding-top: 100px;
+    padding-right: 80px;
+
     display: flex;
     flex-direction: column;
+    gap: 2rem;
 
-    background-color: hsla(0, 0%, 0%, 0.7);
-    padding: 0.25rem 1rem;
-    border-radius: 5px;
+    width: 100vw;
 
-    align-items: center;
+    align-items: flex-end;
+
+    left: 100vw;
+
+    z-index: -1;
 }
 
-.navbar a {
-    color: white;
-
-    text-decoration: none;
-    text-shadow: 0 0 5px black;
-    padding-bottom: 1vh;
+@media only screen and (max-width: 992px) {
+    .navbar .navbar-links {
+        transition: left 0.2s;
+    }
 }
 
-.nav-link {
-    position: relative;
-    overflow: hidden;
-
-    width: max-content;
-}
-
-/* Underline animation for nav-link */
-.nav-link::before {
-    content: "";
-    position: absolute;
-    width: 100%;
+.navbar-links-overlay {
+    position: fixed;
+    top: 0;
     bottom: 0;
-    border-bottom: 1px solid white;
+    left: 0;
+    right: 0;
+    backdrop-filter: blur(6px);
+    background-color: hsla(153, 67%, 20%, 8%);
+    z-index: -2;
 
-    transform: translateY(5px);
-    opacity: 0;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-/* Underline animation for nav-link */
-.nav-link:hover::before {
-    transform: translateY(-7.5px);
-    opacity: 1;
-}
-
-#menu-button {
-    color: white;
-    align-self: flex-end;
-    background: none;
-    border: none;
-    font-size: xx-large;
-    text-shadow: 0 0 5px black;
-    cursor: pointer;
-
-    padding: 0.5rem 1rem;
-    border-radius: 5em;
-
-    transform: scale(1);
-    transition: color 0.1s ease, transform 0.1s ease, background-color 0.1s ease;
-
-}
-
-#menu-button:hover {
-    background-color: hsla(0, 0%, 0%, 0.3);
-}
-
-#menu-button:active {
-    color: hsl(0, 0%, 65%);
-    transform: scale(0.9);
-}
-
-/* Logic for the toggle menu */
-.toggle-menu-content {
     opacity: 0;
     pointer-events: none;
 
-    transition: opacity 0.5s ease;
+    transition: opacity 0.3s;
 }
-.toggle-menu-content.is-open {
-    opacity: 1;
+
+.activated ~ .navbar-links-overlay {
+    opacity: 100;
     pointer-events: all;
 }
 
-
-
-/* All H2 elements (titles of sections) */
-h2 {
-    text-align: center;
-    margin: 3em 0;
+/* Handles toggling the navbar menu */
+.activated ~ .navbar-links {
+    left: 0
 }
 
-/* All a links */
-a {
-    color: white;
+.navbar-links .nav-link {
+    color: var(--bright-color-white);
     text-decoration: none;
+    font-size: 3rem;
+    font-family: monospace;
+    width: fit-content;
+
+    text-shadow: 2px 0 4px #000, -2px 0 4px #000, 0 2px 4px #000, 0 -2px 4px #000;
+    transition: color 0.3s;
 }
 
-/* Portfolio is divided into sections */
-section {
-    background-color: hsl(217, 10%, 25%);
-    margin: auto;
-    margin-bottom: 10em;
-    padding: 1em 2em;
-    box-shadow: 0px 0px 5px 5px #606060;
+.navbar-links .nav-link:hover {
+    color: var(--accent-color);
 }
 
-/* Every other section has a different BG-color */
-section:nth-child(2n + 3) {
-    background-color: hsl(218, 30%, 25%);
-}
-
-/* Responsive sections */
-@media only screen and (min-width: 801px) {
-    section {
-        padding-left: 20%;
-        padding-right: 20%;
+/* Expand the navbar when in desktop view */
+@media only screen and (min-width: 993px) {
+    .navbar .navbar-toggle {
+        visibility: hidden;
+        opacity: 0;
     }
+
+    .navbar .navbar-links-overlay {
+        visibility: collapse;
+    }
+
+    .navbar .navbar-links {
+        position: absolute;
+        top: 2rem;
+        left: 40%;
+        right: 0;
+        width: 45vw;
+        height: fit-content;
+        padding-top: 0;
+        padding-right: 0;
+
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 4rem;
+
+        z-index: 101;
+    }
+
+    .navbar-links .nav-link {
+        height: fit-content;
+        font-size: 1.5rem;
+    }
+}
+
+/*************************************************************
+ * Home (i.e. Hero page) styling
+**************************************************************/
+#home {
+    background-color: var(--darkest-bg-color);
+    color: var(--bright-color-white);
+    height: 100vh;
 }
 
 #home header {
     position: absolute;
-    top: 40vh;
+    width: 40%;
+
+    left: 15%;
+    top: 50%;
+
+    transform: translate(0%, -50%);
+
+    filter: drop-shadow(4px 4px 8px hsl(0, 0%, 20%));
+
+    pointer-events: none;
 }
 
-.name-and-title h2 {
-    text-align: left;
-    padding-bottom: 5vh;
-}
-
-
-#home h1 {
-    animation: load-fade-in 0.4s;
-}
-
-#home h2 {
-    font-size: medium;
-    opacity: 0;
-
-    /* Animation fade-in */
-    animation: load-fade-in 0.4s 0.4s forwards;
-}
-
-#home #link-buttons {
-    position: absolute;
-    top: 10em;
-    margin: auto;
-
-    /* Animation fade-in */
-    opacity: 0;
-    animation: load-fade-in 0.4s 0.8s forwards;
+#home header .highlight {
+    background: #121FCF;
+    background: linear-gradient(135deg,
+            var(--accent-color) 0%,
+            var(--ternary-color) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 
-#home {
-    background-color: hsl(216, 18%, 16%);
-    background-image: linear-gradient(to right, hsl(216, 18%, 16%), hsl(216, 18%, 30%));
-    color: white;
-    padding: 1em 2em;
-    height: 100vh;
+#home p.greeting {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-family: monospace;
+
+    margin: 0;
 }
 
-/* Link button icons */
-.link-button i {
-    font-size: x-large;
-    padding-right: 0.25em;
-}
-/* Link button links */
-.link-button .link {
-    font-size: small;
+#home h1.name {
+    font-size: 3rem;
+    line-height: 3.2rem;
+
+    margin: 1.25rem 0;
+    padding: 0;
 }
 
-.link-button a {
-    position: relative;
+#home p.greeting,
+#home h1.name,
+#home p.description {
+    pointer-events: auto;
+}
+
+#home .title {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+#home .description {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+
+#home .link-buttons {
+    margin-top: 20px;
+    display: flex;
+
+    gap: 30px;
+    width: fit-content;
+
+    pointer-events: auto;
+}
+
+#home .link-buttons .link-button a {
+    font-size: 2.25rem;
+
     text-decoration: none;
+
+    position: relative;
 }
 
-/* Underline animation */
+#home p,
+#home h1,
+.link-buttons {
+    width: fit-content;
+}
+
+@media only screen and (max-width: 992px) {
+    #home header {
+        width: 65%;
+    }
+
+    #home h1.name {
+        font-size: 2.5rem;
+    }
+}
+
+/* Underline for link buttons */
 .link-button a::before {
     content: "";
     position: absolute;
-    width: 95%;
+    width: 100%;
     bottom: -1px;
     border: 1px solid white;
 
@@ -226,176 +325,351 @@ section:nth-child(2n + 3) {
     transform: scale(0, 1);
     opacity: 0;
 }
-/* Underline animation */
+
+/* Underline animation for link buttons*/
 .link-button a:hover::before {
     transform: scale(1, 1);
     opacity: 1;
 }
 
-/* Styling elements with an icon and label */
-.iconlabel {
-    display: inline-flex;
+.link-button a:link,
+.link-button a:visited {
+    color: var(--bright-color-white);
+}
+
+/*************************************************************
+ * Divider styling (between sections)
+**************************************************************/
+
+.divider {
+    height: 50px;
+}
+
+#home + .divider {
+    background-image: linear-gradient(var(--darkest-bg-color), var(--darker-color));
+}
+
+/*************************************************************
+ * Section styling
+**************************************************************/
+section {
+    margin-inline: auto;
+    padding: 0 10%;
+    max-width: 992px;
+    scroll-margin-top: 100px;
+}
+
+section h1.section-title {
+    font-size: 2rem;
+
+    color: var(--accent-color);
+
+    display: flex;
+    justify-content: space-between;
+
+    font-family: monospace;
+}
+
+section p {
+    font-weight: 400;
+}
+
+section h1.section-title::after {
+    content: "";
+    display: block;
+    position: relative;
+
+    top: 1rem;
+    height: 1px;
+    width: 51%;
+    border-bottom: 1px solid var(--accent-color);
+    opacity: 50%;
+}
+
+/*************************************************************
+ * About section styling
+**************************************************************/
+
+#about .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 0;
+    gap: 5%;
+}
+
+#about .about-content div {
+    width: 45%;
+}
+
+@media only screen and (max-width: 992px) {
+    #about .about-content div {
+        width: 90%;
+    }
+}
+
+/*************************************************************
+ * Skills section styling
+**************************************************************/
+
+.skills-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.skills-content .skills-container-group {
+    flex: 40%;
+
+    padding: 10px 20px 40px;
+    border-radius: 50px 10px;
+
+    background-color: var(--darker-color);
+    border-left: 4px solid;
+    border-top: 4px solid;
+}
+
+.skills-content .skills-container-group:nth-child(4n) {
+    border-color: var(--accent-color-dark);
+}
+
+.skills-container-group:nth-child(4n + 1) {
+    border-color: var(--accent-sq2-dark);
+}
+
+.skills-container-group:nth-child(4n + 2) {
+    border-color: var(--accent-sq3-dark);
+}
+
+.skills-container-group:nth-child(4n + 3) {
+    border-color: var(--accent-sq4-dark);
+}
+
+@media only screen and (max-width: 992px) {
+    .skills-content .skills-container-group {
+        flex: 80%;
+    }
+}
+
+#skills .skills-container-title {
+    color: var(--accent-color-light);
+}
+
+#skills .skills-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+#skills .skills-container-item {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0.25rem;
-    padding: 0.25rem;
-    border-radius: 1rem;
+    width: fit-content;
 
-    transform: scale(1);
-    transition: transform 0.2s ease, background-color 1s ease-out;
-}
-
-.iconlabel:hover {
-    transform: scale(1.2);
-    background-color: hsl(0, 0%, 35%);
-}
-
-/* For styling the icons in the skills section */
-svg {
-    width: 64px;
-    padding: 0.5rem;
-}
-
-/* Any SVGs that need a background (usually a bright one) will be given one here */
-.invert-icon svg {
-    filter: invert(100%);
-}
-
-/* Style the contains for the languages and technologies */
-.skills-languages, .skills-technologies {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-/* Styling projects */
-.projects {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-/* Styling the project */
-article.project {
-    display: flex;
-    flex-direction: column;
-    margin-top: 4rem;
-    margin-bottom: 4rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-
-    border: 6px solid hsl(121, 39%, 69%);
-    border-right: none;
-    border-top: none;
-    border-bottom: none;
-    border-image: linear-gradient(to top, hsl(121, 39%, 69%), hsl(95, 50%, 55%)) 4;
-    border-radius: 0.5em;
-    padding: 1em;
-    transition: transform 0.2s ease;
-
-    width: 300px;
-}
-
-article.project .project-details {
-    display: flex;
-    flex-direction: column;
-}
-
-
-article.project .project-techs-langs {
-    font-size: xx-large;
-}
-
-article.project .project-links {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-article.project .project-link {
-    border: 2px solid white;
-    border-radius: 1rem;
-    margin-top: 1rem;
-    padding: 0.25rem 0.5rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-}
-
-article.project .project-link-github {
-    color: hsl(40, 80%, 70%);
-    border-color: hsl(40, 80%, 70%);
-}
-
-article.project .project-link-play,
-article.project .project-link-try {
-    color: hsl(150, 80%, 70%);
-    border-color: hsl(150, 80%, 70%);
-}
-
-article.project .project-link-trailer {
-    color: hsl(0, 80%, 70%);
-    border-color: hsl(0, 80%, 70%);
-}
-
-article.project .project-link:hover {
-    background-color: hsla(0, 0%, 0%, 0.5);
-}
-
-article.web-project {
-    border-image: linear-gradient(to top, hsl(180, 100%, 36%), hsl(240, 85%, 65%)) 4;
-}
-
-article.game-project {
-    border-image: linear-gradient(to top, hsl(18, 49%, 73%), hsl(340, 49%, 55%)) 4;
-}
-
-article.project:hover {
-    transform: scale(1.01);
-    background-color: hsl(218, 50%, 15%);
-}
-
-article.project h3 {
+    max-width: 56px;
     text-align: center;
+    font-size: 1rem;
+    font-weight: 300;
 }
 
-/* Image styling for projects */
-article.project figure {
-    width: 250px;
+/* animates on hover, which is applied in index.js */
+.skills-container-item-icon {
+    transition: transform 1s cubic-bezier(0.075, 0.82, 0.165, 1), filter 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.skills-container-item-icon:hover {
+    transform: scale(1.5) rotate(-10deg);
+}
+
+.skills-container-item svg {
+    height: 56px;
+
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.skills-container-item :nth-child(4n) svg {
+    animation-delay: -0.2s;
+}
+
+.skills-container-item:nth-child(4n + 1) svg {
+    animation-delay: -0.8s;
+}
+
+.skills-container-item:nth-child(4n + 2) svg {
+    animation-delay: -1.3s;
+}
+
+.skills-container-item:nth-child(4n + 3) svg {
+    animation-delay: -1.9s;
+}
+
+@keyframes floating {
+    0% {
+        transform: translate(0, 0px);
+    }
+
+    50% {
+        transform: translate(0, 20px);
+    }
+
+    100% {
+        transform: translate(0, 0px);
+    }
+}
+
+.skills-container-item .skills-container-item-label {
+    transform: translate(0, 20px);
+
+    filter: drop-shadow(4px 4px 4px black);
+}
+
+/*************************************************************
+ * Projects section styling
+**************************************************************/
+
+#projects .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+article.project {
+    width: 75%;
+    border: 0px solid;
+    border-radius: 6px;
     overflow: hidden;
+
+    filter: drop-shadow(4px 4px 16px black);
+
+    /* Fallback BG if no project type is specified */
+    background-image: linear-gradient(to right, hsl(118, 53%, 43%), hsl(231, 69%, 47%));
+}
+
+article.project:nth-child(2n) {
+    align-self: flex-end;
+}
+
+article.project.web-project {
+    background-image: linear-gradient(to right, hsl(180, 94%, 28%), hsl(240, 76%, 55%));
+}
+
+article.project.game-project {
+    background-image: linear-gradient(to right, hsl(29, 53%, 53%), hsl(273, 50%, 42%));
+}
+
+.project .project-image-wrapper {
     margin: 0;
-    align-self: center;
-    max-height: 15rem;
-}
-/* Styling the exact <img> tag */
-figure img {
-    display: block;
     width: 100%;
+    max-height: 500px;
+    overflow: hidden;
 }
 
-/* Responsive desktop project view */
-@media only screen and (min-width: 801px) {
-    #projects-section {
-        padding-left: 2%;
-        padding-right: 2%;
-    }
+article.project .project-image {
+    object-fit: cover;
+    object-position: top;
+    width: inherit;
+    aspect-ratio: 16 / 10;
+}
+
+article.project .project-information {
+    padding: 2rem;
+}
+
+article.project .project-title {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+article.project .project-title,
+article.project .project-description {
+    text-shadow: 0 0 5px #000;
+}
+
+article.project .project-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    margin: 2rem 0;
+}
+
+article.project .project-technologies i {
+    text-shadow: 2px 0 4px #fff, -2px 0 4px #fff, 0 2px 4px #fff, 0 -2px 4px #fff;
+    text-shadow: blue;
+    background-color: hsla(0, 0%, 100%, 15%);
+    border-radius: 50%;
+    padding: .75rem;
+    font-size: 2rem;
+
+    transition: filter 1s cubic-bezier(0.075, 0.82, 0.165, 1),
+        background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+article.project .project-technologies i.dark-shadow {
+    text-shadow: 2px 0 4px #333, -2px 0 4px #333, 0 2px 4px #333, 0 -2px 4px #333;
+}
+
+article.project .project-technologies i:hover {
+    filter: drop-shadow(0px 0px 2px black);
+    background-color: hsla(0, 0%, 0%, 50%);
+    text-shadow: 0 0 4px #000;
+}
+
+article.project .project-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+article.project .project-navigation-button {
+    border-radius: 5px;
+    background-color: var(--accent-color-light);
+    padding: .35rem .7rem;
+    color: black;
+    text-decoration: none;
+
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    white-space: nowrap;
+
+    transition: filter 0.25s;
+}
+
+article.project .project-navigation-button:hover {
+    filter: saturate(140%);
+}
+
+article.project .project-navigation-button:active {
+    filter: saturate(200%);
+}
+
+@media only screen and (max-width: 992px) {
     article.project {
-        display: block;
-        width: 500px;
+        width: 100%;
     }
-    article.project .project-details {
-        display: block;
+
+    article.project:nth-child(2n) {
+        align-self: flex-start;
     }
-    article.project figure {
-        float: right;
+
+    article.project .project-technologies {
+        gap: .5rem;
+    }
+
+    article.project .project-technologies i {
+        padding: .5625rem;
+        font-size: 1.5rem;
     }
 }
 
-/* Show this element and its children on view */
-.animate-on-view {
-    opacity: 0;
-    transform: translate(-25px);
-    transition: transform 0.75s ease, opacity 0.75s ease;
-}
-.animate-on-view.is-visible {
-    opacity: 1;
-    transform: translateX(0px);
-}
+/* TODO: Consider scaling the fonts and sizes by rem, then
+using this breakpoint to scale everything */
+/* @media only screen and (max-width: 992px) {
+    :root {
+        font-size: 12px;
+    }
+} */
