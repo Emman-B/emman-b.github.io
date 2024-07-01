@@ -1,9 +1,12 @@
 # My Portfolio Page
-
-This is my portfolio page. As of version 2, it is completely written in HTML, CSS, and JavaScript.
+Welcome to my porfolio page! This is version 3 of my portfolio, built primarily
+with HTML, CSS, and JavaScript, then deployed onto GitHub Pages.
 
 ## Usage
 You can access my portfolio with the following link: <https://emman-b.github.io/>.
 
-## Pull Requests
-I am currently not accepting any pull requests for my portfolio at this time. This may change in the future.
+## Libraries, Assets, etc. Used in Portfolio
+- Particles.JS (v2.0.0) https://github.com/VincentGarreau/particles.js
+- Google Fonts https://fonts.google.com/
+- Font Awesome https://fontawesome.com/
+- Google Analytics
