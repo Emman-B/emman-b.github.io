@@ -788,11 +788,3 @@ article.project .project-navigation-button:active {
 .footer .highlight:hover {
     text-decoration: underline;
 }
-
-/* TODO: Consider scaling the fonts and sizes by rem, then
-using this breakpoint to scale everything */
-/* @media only screen and (max-width: 992px) {
-    :root {
-        font-size: 12px;
-    }
-} */
