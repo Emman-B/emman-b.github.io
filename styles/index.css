@@ -10,7 +10,7 @@ html {
     color-scheme: dark;
 
     --bright-color-white: hsl(176, 29%, 92%);
-    --accent-color: hsl(153, 67%, 60%);
+    --accent-color: hsl(153, 67%, 60%); /* #55dda0 */
     --accent-color-light: hsl(153, 67%, 75%);
     --ternary-color: hsl(231, 100%, 65%);
     --dark-color: hsl(210, 100%, 8%);
@@ -41,6 +41,26 @@ body {
     font-weight: 600;
     font-style: normal;
     color: var(--bright-color-white);
+}
+
+.highlight {
+    color: var(--accent-color);
+}
+
+/*************************************************************
+ * Animating-on-view elements
+**************************************************************/
+.animate-on-view {
+    opacity: 0;
+    transform: scale(85%);
+
+    transition: opacity .5s .1s ease-out,
+        transform 1s .1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.animate-on-view.is-visible {
+    opacity: 1;
+    transform: scale(100%);
 }
 
 /*************************************************************
@@ -349,6 +369,14 @@ body {
     background-image: linear-gradient(var(--darkest-bg-color), var(--darker-color));
 }
 
+.divider-med {
+    height: 125px;
+}
+
+.divider-big {
+    height: 200px;
+}
+
 /*************************************************************
  * Section styling
 **************************************************************/
@@ -397,12 +425,83 @@ section h1.section-title::after {
     gap: 5%;
 }
 
-#about .about-content div {
+#about .about-content > div {
     width: 45%;
 }
 
+.about-services-title {
+    font-size: 1.5rem;
+}
+
+.about-services-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-service {
+    border: 2px solid var(--accent-color);
+    border-radius: 35px;
+    color: var(--accent-color);
+    background-color: var(--darker-color);
+
+    height: 22px;
+    min-width: 22px;
+    max-width: 22px;
+    padding: .5rem;
+    text-align: center;
+
+    text-wrap: nowrap;
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: max-width .5s, color .5s, background-color .5s;
+}
+
+.about-service i {
+    padding-left: .1rem;
+}
+
+.about-service.current {
+    color: var(--darker-color);
+    background-color: var(--accent-color);
+    max-width: 200px;
+
+    transition: max-width .5s, color .5s, background-color .5s;
+}
+
+.about-service:not(.current) .about-service-name {
+    visibility: hidden;
+}
+
+.about-services-images-list {
+    display: grid;
+    overflow: clip;
+}
+
+.about-service-image-wrapper {
+    grid-row: 1;
+    grid-column: 1;
+    margin: 4rem 0 2rem;
+    max-width: 100%;
+}
+
+.about-service-image {
+    max-width: 100%;
+}
+
+.about-service-image-caption {
+    margin-top: 1rem;
+    font-weight: 300;
+    text-align: center;
+}
+
 @media only screen and (max-width: 992px) {
-    #about .about-content div {
+    #about .about-content {
+        gap: 3rem;
+    }
+
+    #about .about-content > div {
         width: 90%;
     }
 }
@@ -477,6 +576,10 @@ section h1.section-title::after {
     transition: transform 1s cubic-bezier(0.075, 0.82, 0.165, 1), filter 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.invert-icon {
+    filter: invert(100%);
+}
+
 .skills-container-item-icon:hover {
     transform: scale(1.5) rotate(-10deg);
 }
@@ -490,7 +593,7 @@ section h1.section-title::after {
     animation-timing-function: ease-in-out;
 }
 
-.skills-container-item :nth-child(4n) svg {
+.skills-container-item:nth-child(4n) svg {
     animation-delay: -0.2s;
 }
 
@@ -571,7 +674,6 @@ article.project .project-image {
     object-fit: cover;
     object-position: top;
     width: inherit;
-    aspect-ratio: 16 / 10;
 }
 
 article.project .project-information {
@@ -637,6 +739,8 @@ article.project .project-navigation-button {
     white-space: nowrap;
 
     transition: filter 0.25s;
+
+    font-size: .9rem;
 }
 
 article.project .project-navigation-button:hover {
@@ -656,6 +760,10 @@ article.project .project-navigation-button:active {
         align-self: flex-start;
     }
 
+    article.project .project-description {
+        font-size: .9rem;
+    }
+
     article.project .project-technologies {
         gap: .5rem;
     }
@@ -664,6 +772,21 @@ article.project .project-navigation-button:active {
         padding: .5625rem;
         font-size: 1.5rem;
     }
+}
+
+/*************************************************************
+ * Footer styling
+**************************************************************/
+.footer {
+    text-align: center;
+}
+
+.footer .highlight {
+    text-decoration: none;
+}
+
+.footer .highlight:hover {
+    text-decoration: underline;
 }
 
 /* TODO: Consider scaling the fonts and sizes by rem, then

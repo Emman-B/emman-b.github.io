@@ -12,7 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
     <!-- Devicon -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.13.0/devicon.min.css">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
+
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="fontawesome-free-5.15.4-web/css/all.css">
@@ -22,7 +23,7 @@
 
     <!-- Scripts -->
     <script src="scripts/animateOnView.js"></script>
-    <script src="scripts/navbarMenu.js"></script>
+    <script defer src="scripts/servicesAnimation.js"></script>
     <script defer src="scripts/index.js"></script>
 
     <title>Emmanuel Butor | Portfolio</title>
@@ -78,19 +79,60 @@
         <h1 class="section-title">About</h1>
         <div class="about-content">
             <div class="about-description">
-                <p>
-                    I am a software developer around 2 years of professional experience building responsive
-                    web applications.
+                <p class="animate-on-view">
+                    I have around 2 years of experience as a software developer, building and maintaining
+                    features using Ruby on Rails, Elixir, and other frameworks and languages.
                 </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, repudiandae. Rem optio blanditiis nihil tempora dolor, vero illo reprehenderit tempore?
+                <p class="animate-on-view">
+                    I first started out my journey tinkering with customization in video games, which
+                    required learning the APIs for modifying games to my liking. Though the
+                    mods may be lost to time, my drive for building things has remained with me.
                 </p>
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus necessitatibus quod sint ab magnam explicabo numquam quibusdam nobis quas ipsam dolores voluptates, molestiae cum voluptas! Beatae saepe distinctio aperiam, modi veniam architecto est dolore incidunt similique officia dolorum laudantium natus, rerum maxime omnis hic nam!
+                <p class="animate-on-view">
+                    I'm always learning, so whether I'm using a brand new web application framework
+                    for a full-stack application, or if I'm building games with an unfamiliar game engine,
+                    every starting point is an adventure.
                 </p>
             </div>
             <div class="about-services">
-                <p>Here's what I can provide for you:</p>
+                <p class="about-services-title">Services I Provide:</p>
+                <div id="about-services-list" class="about-services-list">
+                    <span class="about-service current" data-service-name="full-stack-dev">
+                        <i class="fas fa-server"></i>
+                        <span class="about-service-name">Full-Stack Dev</span>
+                    </span>
+                    <span class="about-service" data-service-name="game-dev">
+                        <i class="fas fa-gamepad"></i>
+                        <span class="about-service-name">Game Dev</span>
+                    </span>
+                    <span class="about-service" data-service-name="software-dev">
+                        <i class="fas fa-desktop"></i>
+                        <span class="about-service-name">Software Dev</span>
+                    </span>
+                </div>
+                <div class="about-services-images-list">
+                    <figure class="about-service-image-wrapper" data-service-name="full-stack-dev">
+                        <img class="about-service-image" src="images/undraw_web_developer_re_h7ie.svg" alt="full stack developer illustration">
+                        <figcaption id="about-service-image-caption" class="about-service-image-caption">
+                            Whether you need beautiful frontend interfaces or efficient backend services,
+                            I can get the job done.
+                        </figcaption>
+                    </figure>
+                    <figure class="about-service-image-wrapper" data-service-name="game-dev">
+                        <img class="about-service-image" src="images/undraw_gaming_re_cma2.svg" alt="game developer illustration">
+                        <figcaption id="about-service-image-caption" class="about-service-image-caption">
+                            With background in both building and playing games, I'm committed to providing
+                            players the best gameplay experiences.
+                        </figcaption>
+                    </figure>
+                    <figure class="about-service-image-wrapper" data-service-name="software-dev">
+                        <img class="about-service-image" src="images/undraw_programming_re_kg9v.svg" alt="software developer illustration">
+                        <figcaption id="about-service-image-caption" class="about-service-image-caption">
+                            I can deliver any kind of product that you need, even if what you're looking
+                            for stretches beyond these categories.
+                        </figcaption>
+                    </figure>
+                </div>
             </div>
         </div>
     </section>
@@ -104,7 +146,7 @@
     <section id="skills">
         <h1 class="section-title">Skills</h1>
         <div class="skills-content">
-            <div class="languages skills-container-group">
+            <div class="languages skills-container-group animate-on-view">
                 <h3 class="skills-container-title">Languages</h3>
                 <div class="skills-container">
                     <span class="skills-container-item">
@@ -169,7 +211,7 @@
                     </span>
                 </div>
             </div>
-            <div class="frameworks skills-container-group">
+            <div class="frameworks skills-container-group animate-on-view">
                 <h3 class="skills-container-title">Frameworks</h3>
                 <div class="skills-container">
                     <span class="skills-container-item">
@@ -190,9 +232,15 @@
                         </svg>
                         <span class="skills-container-item-label">React</span>
                     </span>
+                    <span class="skills-container-item">
+                        <svg class="invert-icon" viewBox="0 0 128 128">
+                            <path d="M126.67 98.44c-4.56 1.16-7.38.05-9.91-3.75-5.68-8.51-11.95-16.63-18-24.9-.78-1.07-1.59-2.12-2.6-3.45C89 76 81.85 85.2 75.14 94.77c-2.4 3.42-4.92 4.91-9.4 3.7l26.92-36.13L67.6 29.71c4.31-.84 7.29-.41 9.93 3.45 5.83 8.52 12.26 16.63 18.67 25.21 6.45-8.55 12.8-16.67 18.8-25.11 2.41-3.42 5-4.72 9.33-3.46-3.28 4.35-6.49 8.63-9.72 12.88-4.36 5.73-8.64 11.53-13.16 17.14-1.61 2-1.35 3.3.09 5.19C109.9 76 118.16 87.1 126.67 98.44zM1.33 61.74c.72-3.61 1.2-7.29 2.2-10.83 6-21.43 30.6-30.34 47.5-17.06C60.93 41.64 63.39 52.62 62.9 65H7.1c-.84 22.21 15.15 35.62 35.53 28.78 7.15-2.4 11.36-8 13.47-15 1.07-3.51 2.84-4.06 6.14-3.06-1.69 8.76-5.52 16.08-13.52 20.66-12 6.86-29.13 4.64-38.14-4.89C5.26 85.89 3 78.92 2 71.39c-.15-1.2-.46-2.38-.7-3.57q.03-3.04.03-6.08zm5.87-1.49h50.43c-.33-16.06-10.33-27.47-24-27.57-15-.12-25.78 11.02-26.43 27.57z"></path>
+                        </svg>
+                        <span class="skills-container-item-label">Express</span>
+                    </span>
                 </div>
             </div>
-            <div class="cloud-database skills-container-group">
+            <div class="cloud-database skills-container-group animate-on-view">
                 <h3 class="skills-container-title">Cloud & Database</h3>
                 <div class="skills-container">
                     <span class="skills-container-item">
@@ -221,7 +269,7 @@
                     </span>
                 </div>
             </div>
-            <div class="technologies skills-container-group">
+            <div class="technologies skills-container-group animate-on-view">
                 <h3 class="skills-container-title">Technologies</h3>
                 <div class="skills-container">
                     <span class="skills-container-item">
@@ -270,8 +318,8 @@
     <section id="projects">
         <h1 class="section-title">Projects</h1>
         <div class="projects-list">
-            <article class="project web-project">
-                <figure class="project-image-wrapper first-project">
+            <article class="project web-project animate-on-view">
+                <figure class="project-image-wrapper">
                     <img class="project-image" src="images/portfolio-emman-b-github-io.png" alt="Portfolio Project Image">
                 </figure>
                 <div class="project-information">
@@ -287,28 +335,152 @@
                     </div>
                     <div class="project-navigation">
                         <a class="project-navigation-button" href="#home" rel="noopener noreferrer">Try it Out</a>
-                        <a class="project-navigation-button" href="/" target="_blank" rel="noopener noreferrer">Src Code</a>
+                        <a class="project-navigation-button" href="https://github.com/Emman-B/emman-b.github.io" target="_blank" rel="noopener noreferrer">Source Code</a>
                     </div>
                 </div>
             </article>
 
-            <article class="project game-project">
+            <article class="project web-project animate-on-view">
                 <figure class="project-image-wrapper">
-                    <img class="project-image" src="https://user-images.githubusercontent.com/34151856/129804477-212523f3-1606-451c-b4b2-42ae2f82b8e3.png" alt="Portfolio Project Image">
+                    <img class="project-image" src="https://user-images.githubusercontent.com/34151856/129804587-cc365ee4-a0fa-4c2b-bd55-ddc5f5c868b1.png" alt="Blog FS Project Image">
                 </figure>
                 <div class="project-information">
-                    <h1 class="project-title">PLACEHOLDER</h1>
+                    <h1 class="project-title">blog-fs</h1>
+                    <p class="project-description">
+                        A full-stack blogging application solely built with React, Express, Node.js, and either
+                        PostgreSQL or MongoDB. Supports full CRUD capabilities along with rich text editing
+                        and account authentication.
+                    </p>
+                    <div class="project-technologies">
+                        <i class="devicon-react-original colored dark-shadow" title="React"></i>
+                        <i class="devicon-nodejs-plain colored dark-shadow" title="Node.js"></i>
+                        <i class="devicon-express-original dark-shadow" title="Express"></i>
+                        <i class="devicon-postgresql-plain colored" title="PostgreSQL"></i>
+                        <i class="devicon-mongodb-plain colored" title="MongoDB"></i>
+                    </div>
+                    <div class="project-navigation">
+                        <a class="project-navigation-button" href="https://github.com/Emman-B/blog-fs" target="_blank" rel="noopener noreferrer">Source Code (PostgreSQL)</a>
+                        <a class="project-navigation-button" href="https://github.com/Emman-B/blog-fs-mern" target="_blank" rel="noopener noreferrer">Source Code (MongoDB)</a>
+                    </div>
                 </div>
             </article>
-            <article class="project alt-project">
+
+            <article class="project web-project animate-on-view">
                 <figure class="project-image-wrapper">
-                    <img class="project-image" src="images/portfolio-emman-b-github-io.png" alt="Portfolio Project Image">
+                    <img class="project-image" src="images/linkedin-job-application-tracker-extension-screenshot.png" alt="LinkedIn Job Application Tracker Extension Project Image">
                 </figure>
                 <div class="project-information">
-                    <h1 class="project-title">PLACEHOLDER</h1>
+                    <h1 class="project-title">LinkedIn Job Application Tracker Extension</h1>
+                    <p class="project-description">
+                        A Chrome extension that automatically saves information on jobs applied to
+                        via LinkedIn. Data is saved locally and can be exported as a CSV to be used
+                        in a spreadsheet. This was built with HTML, CSS, and JavaScript.
+                    </p>
+                    <div class="project-technologies">
+                        <i class="devicon-chrome-plain colored" title="Chrome"></i>
+                        <i class="devicon-html5-plain colored" title="HTML5"></i>
+                        <i class="devicon-css3-plain colored" title="CSS3"></i>
+                        <i class="devicon-javascript-plain colored dark-shadow" title="JavaScript"></i>
+                    </div>
+                    <div class="project-navigation">
+                        <a class="project-navigation-button" href="https://github.com/Emman-B/linkedin-job-application-tracker-extension" target="_blank" rel="noopener noreferrer">Source Code</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project web-project animate-on-view">
+                <figure class="project-image-wrapper">
+                    <img class="project-image" src="https://user-images.githubusercontent.com/34151856/131023835-7b37d05d-338e-4406-809d-599fd56cd406.png" alt="OTSecret Project Image">
+                </figure>
+                <div class="project-information">
+                    <h1 class="project-title">OTSecret</h1>
+                    <p class="project-description">
+                        A full-stack web application for sharing encrypted secrets, built with React,
+                        Express, Node.js, PostgreSQL, and deployed on GitHub Pages and Heroku.
+                    </p>
+                    <div class="project-technologies">
+                        <i class="devicon-react-original colored dark-shadow" title="React"></i>
+                        <i class="devicon-nodejs-plain colored dark-shadow" title="Node.js"></i>
+                        <i class="devicon-express-original dark-shadow" title="Express"></i>
+                        <i class="devicon-postgresql-plain colored" title="PostgreSQL"></i>
+                        <i class="devicon-heroku-plain colored" title="Heroku"></i>
+                    </div>
+                    <div class="project-navigation">
+                        <a class="project-navigation-button" href="https://emman-b.github.io/OTSecret/" target="_blank" rel="noopener noreferrer">Try it Out</a>
+                        <a class="project-navigation-button" href="https://github.com/Emman-B/OTSecret" target="_blank" rel="noopener noreferrer">Source Code</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project game-project animate-on-view">
+                <figure class="project-image-wrapper">
+                    <img class="project-image" src="https://img.itch.zone/aW1hZ2UvMTI2MzYwNi83MzY4OTExLnBuZw==/original/govOvt.png" alt="Heart to Hearth Project Image">
+                </figure>
+                <div class="project-information">
+                    <h1 class="project-title">Heart to Hearth</h1>
+                    <p class="project-description">
+                        A narrative-driven game demo combining the elements of a visual novel with
+                        an interactive cooking game. Follow Cecilia, a former adventure, as she settles
+                        down and opens a soup restaurant and meets new people!
+                    </p>
+                    <div class="project-technologies">
+                        <i class="devicon-unity-plain dark-shadow" title="Unity"></i>
+                    </div>
+                    <div class="project-navigation">
+                        <a class="project-navigation-button" href="https://no-thoughts-gaming.itch.io/heart-to-hearth" target="_blank" rel="noopener noreferrer">Play the Game</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project game-project animate-on-view">
+                <figure class="project-image-wrapper">
+                    <img class="project-image" src="https://user-images.githubusercontent.com/34151856/130376530-75d68033-7ae8-4824-9c7f-c4df8e479a3b.png" alt="Together in Spirit Project Image">
+                </figure>
+                <div class="project-information">
+                    <h1 class="project-title">Together in Spirit</h1>
+                    <p class="project-description">
+                        A narrative-driven game about a lonely ghost looking to make new friends.
+                        Float around and solve puzzles and try to find someone else to hang out
+                        with!
+                    </p>
+                    <div class="project-technologies">
+                        <i class="devicon-unity-plain dark-shadow" title="Unity"></i>
+                    </div>
+                    <div class="project-navigation">
+                        <a class="project-navigation-button" href="https://togetherinspirit.itch.io/together-in-spirit" target="_blank" rel="noopener noreferrer">Play the Game</a>
+                        <a class="project-navigation-button" href="https://github.com/dyzhang16/CS170Project" target="_blank" rel="noopener noreferrer">Source Code</a>
+                        <a class="project-navigation-button" href="https://www.youtube.com/watch?v=FkAIwDsq42M" target="_blank" rel="noopener noreferrer">Trailer</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project game-project animate-on-view">
+                <figure class="project-image-wrapper">
+                    <img class="project-image" src="https://user-images.githubusercontent.com/34151856/130375927-3cf925b9-f992-4ea4-b5cc-e419820336a7.png" alt="D&D DM Toolset Project Image">
+                </figure>
+                <div class="project-information">
+                    <h1 class="project-title">D&D DM Toolset</h1>
+                    <p class="project-description">
+                        A free Unity application to provide Dungeon Masters and Game Masters a
+                        set of tools to assist them when hosting various tabletop roleplaying games.
+                        Some tools include virtual dice-rolling, quick-access monster information,
+                        initiative tracking, and much more!
+                    </p>
+                    <div class="project-technologies">
+                        <i class="devicon-unity-plain dark-shadow" title="Unity"></i>
+                    </div>
+                    <div class="project-navigation">
+                        <a class="project-navigation-button" href="https://github.com/matthewfritsch/DND-DM-Toolset" target="_blank" rel="noopener noreferrer">Source Code</a>
+                    </div>
                 </div>
             </article>
         </div>
+    </section>
+
+    <div class="divider-big"></div>
+
+    <section id="footer" class="footer">
+        <p>Portfolio built by <a href="#home" class="highlight" rel="noopener noreferrer">Emmanuel Butor</a>, 2024</p>
     </section>
 
     <div class="divider"></div>
